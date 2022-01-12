@@ -59,6 +59,12 @@
       "type": "relation",
       "relation": "oneToOne",
       "target": "plugin::users-permissions.user"
+    },
+    "OperationStartTime": {
+      "type": "string"
+    },
+    "OperationEndTime": {
+      "type": "string"
     }
   }
 }
