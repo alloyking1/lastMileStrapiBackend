@@ -37,5 +37,35 @@ module.exports = {
       // ctx.body = err;
     }
   },
+  authUserMerchants: async (ctx, next) => {
+    try {
+      const id = ctx.params.id;
+      const query = await strapi.db.query('api::merchant.merchant').findMany({
+        where: {
+          users_permissions_user: id,
 
+        },
+      });
+
+      if (query) {
+        await ctx.send({
+          data: query,
+          status: 200
+        })
+      } else {
+        await ctx.send({
+          data: "No merchant found",
+          status: 404
+        })
+      }
+
+    } catch (err) {
+      await ctx.send({
+        error: err,
+        message: err.message,
+        status: 500
+      })
+    }
+
+  }
 };

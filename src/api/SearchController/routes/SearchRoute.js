@@ -12,5 +12,10 @@ module.exports = {
         auth: false,
       },
     },
+    {
+      method: 'GET',
+      path: '/user/:id/merchant',
+      handler: SearchController.authUserMerchants
+    },
   ],
 };
